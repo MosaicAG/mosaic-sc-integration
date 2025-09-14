@@ -77,7 +77,11 @@ module example::integration_example {
         // Check remaining input token and do your own logic with the remaining input token.
         // In this example, we just deposit the remaining token back to the sender.
         if (input_is_fa) {
-            primary_fungible_store::deposit(sender_address, option::destroy_some(input_fa_left));
+            if (option::is_some(&input_fa_left)) {
+                primary_fungible_store::deposit(sender_address, option::destroy_some(input_fa_left));
+            } else {
+                option::destroy_none(input_fa_left);
+            };
             coin::destroy_zero(input_coin_left);
         } else {
             coin::deposit(sender_address, input_coin_left);
