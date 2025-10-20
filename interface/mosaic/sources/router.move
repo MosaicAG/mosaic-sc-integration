@@ -80,8 +80,18 @@ module mosaic::router {
         abort 0
     }
 
+    /// **Deprecated**: use `get_input_amount_needed` instead.
     public fun get_input_amount(_arg0: &vector<u64>, _arg1: u64, _arg2: bool): u64 {
         abort 0
     }
 
+    public fun get_input_amount_needed<X, Y>(
+        _arg0: vector<u64>,
+        _arg1: vector<address>,
+        _arg2: &vector<u64>,
+        _arg3: u64,
+        _arg4: bool,
+    ): u64 {
+        abort 0
+    }
 }

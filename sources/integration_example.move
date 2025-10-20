@@ -36,7 +36,7 @@ module example::integration_example {
         let sender_address = signer::address_of(sender);
 
         // Step 1. Get input token and amount.
-        let input_amount = router::get_input_amount(&arg2, arg8, arg9);
+        let input_amount = router::get_input_amount_needed<T1, T2>(arg3, arg5, &arg2, arg8, arg9);
         let input_fa_metadata_opt = router::get_input_fa_metadata(&arg3, &arg5);
         // Check if the input token is fungible asset. False if the input token is coin.
         let input_is_fa = option::is_some(&input_fa_metadata_opt);
